@@ -1,0 +1,34 @@
+﻿<Window x:Class="ToDoList.TimePickerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToDoList"
+        mc:Ignorable="d"
+        Title="TimePickerWindow" Height="150" Width="290"
+        WindowStyle="None" Background="LightGray" Loaded="Window_Loaded"   ResizeMode="NoResize"
+        BorderBrush="DarkGray" BorderThickness="1">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Enter the hour and minute" FontWeight="Bold" FontSize="16" Margin="10"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <UniformGrid Rows="1" Columns="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ComboBox x:Name="HourComboBox" Width="50" Margin="10"
+                      ItemsSource="{Binding Hours}" SelectedIndex="0"/>
+            <Label Content=":" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBox x:Name="MinuteComboBox" Width="50" Margin="10"
+                      ItemsSource="{Binding Minutes}" SelectedIndex="0"/>
+        </UniformGrid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+            <Button Content="OK"   Style="{StaticResource DefaultButtonStyle}" Command= "{Binding AddNewTaskCommand}" Width="80" Margin="5" Click="OKButton_Click"/>
+            <Button Content="Cancel" Style="{StaticResource DefaultButtonStyle}" Width="80" Margin="5" Click="CancelButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
